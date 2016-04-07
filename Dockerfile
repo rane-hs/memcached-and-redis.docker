@@ -1,7 +1,7 @@
-FROM alpine:latest
-#FROM alloylab/memcached
-MAINTAINER Hiroshi Seki <rane-hs@gmail.com>
+#FROM alpine:latest
+FROM smebberson/alpine-base:1.0.0
 
+MAINTAINER Hiroshi Seki <rane-hs@gmail.com>
 
 ENV TERM xterm
 
@@ -24,10 +24,5 @@ VOLUME ["/data"]
 # Expose the ports for redis
 EXPOSE 6379
 
-COPY conf/start.sh /start.sh
-RUN chmod +x /start.sh
-CMD ["/start.sh"]
-
 RUN rm -rf /var/cache/apk/*
 
-USER memcached
